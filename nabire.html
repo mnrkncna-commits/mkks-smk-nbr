@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MKKS SMK Nabire</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { poppins: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        primary: '#0EA5E9',
+                        'primary-dark': '#0284C7',
+                        'primary-light': '#E0F2FE',
+                        accent: '#1E3A5F'
+                    }
+                }
+            }
+        }
+    </script>
+  <style>
+        * { font-family: 'Poppins', sans-serif; }
+        .nav-active { border-bottom: 3px solid #0EA5E9; color: #0EA5E9; }
+        .fade-in { animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-bg { background: linear-gradient(135deg, #0EA5E9 0%, #1E3A5F 100%); }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .card-hover { transition: all 0.3s ease; }
+    </style>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full bg-white text-gray-800 font-poppins">
+  <div id="app" class="h-full w-full overflow-auto"><!-- Navigation -->
+   <nav class="sticky top-0 z-50 bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+     <div class="flex items-center gap-3"><img src="https://iili.io/BvkKR2I.md.png" alt="Logo MKKS" class="w-10 h-10 rounded-full object-cover" loading="lazy" onerror="this.style.background='#0EA5E9';this.alt='Logo';"> <span class="font-bold text-accent text-lg hidden sm:block" id="nav-title">MKKS SMK Nabire</span>
+     </div>
+     <div class="hidden md:flex gap-1" id="nav-menu"><button onclick="showPage('beranda')" class="px-3 py-2 text-sm font-medium rounded hover:text-primary nav-btn" data-page="beranda">Beranda</button> <button onclick="showPage('berita')" class="px-3 py-2 text-sm font-medium rounded hover:text-primary nav-btn" data-page="berita">Berita</button> <button onclick="showPage('akademik')" class="px-3 py-2 text-sm font-medium rounded hover:text-primary nav-btn" data-page="akademik">Akademik</button> <button onclick="showPage('profil')" class="px-3 py-2 text-sm font-medium rounded hover:text-primary nav-btn" data-page="profil">Profil</button> <button onclick="showPage('alur')" class="px-3 py-2 text-sm font-medium rounded hover:text-primary nav-btn" data-page="alur">Alur Pendaftaran</button> <button onclick="showPage('statistik')" class="px-3 py-2 text-sm font-medium rounded hover:text-primary nav-btn" data-page="statistik">Statistik</button> <button onclick="showPage('pendaftaran')" class="px-3 py-2 text-sm font-medium rounded hover:text-primary nav-btn" data-page="pendaftaran">Pendaftaran</button> <button onclick="showPage('login')" class="px-3 py-2 text-sm font-medium rounded hover:text-primary nav-btn" data-page="login">Login Admin</button>
+     </div><button onclick="toggleMobile()" class="md:hidden p-2"><i data-lucide="menu" class="w-6 h-6"></i></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-4 pb-3"><button onclick="showPage('beranda');toggleMobile()" class="block w-full text-left py-2 text-sm">Beranda</button> <button onclick="showPage('berita');toggleMobile()" class="block w-full text-left py-2 text-sm">Berita</button> <button onclick="showPage('akademik');toggleMobile()" class="block w-full text-left py-2 text-sm">Akademik</button> <button onclick="showPage('profil');toggleMobile()" class="block w-full text-left py-2 text-sm">Profil</button> <button onclick="showPage('alur');toggleMobile()" class="block w-full text-left py-2 text-sm">Alur Pendaftaran</button> <button onclick="showPage('statistik');toggleMobile()" class="block w-full text-left py-2 text-sm">Statistik</button> <button onclick="showPage('pendaftaran');toggleMobile()" class="block w-full text-left py-2 text-sm">Pendaftaran</button> <button onclick="showPage('login');toggleMobile()" class="block w-full text-left py-2 text-sm">Login Admin</button>
+    </div>
+   </nav><!-- Pages Container -->
+   <div id="pages"><!-- BERANDA -->
+    <div id="page-beranda" class="page fade-in"><!-- Hero -->
+     <section class="hero-bg text-white py-20 px-4 text-center"><img src="https://iili.io/BvkKR2I.md.png" alt="Logo MKKS SMK Nabire" class="w-28 h-28 mx-auto mb-6 rounded-full bg-white p-2 object-contain" loading="lazy" onerror="this.style.background='#fff';this.alt='Logo MKKS';">
+      <h1 class="text-3xl md:text-5xl font-bold mb-4" id="hero-title">MKKS SMK Nabire</h1>
+      <p class="text-xl md:text-2xl font-light mb-2" id="hero-slogan">SMK Bisa, Siap Kerja, Siap Wirausaha</p>
+      <p class="text-sm opacity-80">Forum Musyawarah Kerja Kepala Sekolah SMK Kabupaten Nabire</p>
+     </section><!-- Sambutan -->
+     <section class="max-w-4xl mx-auto px-4 py-12">
+      <h2 class="text-2xl font-bold text-accent mb-6 text-center">Sambutan Ketua MKKS SMK Nabire</h2>
+      <div class="bg-primary-light rounded-xl p-6 md:p-8">
+       <p class="text-gray-700 leading-relaxed italic mb-4">"Assalamu'alaikum Wr. Wb. Shalom, Om Swastiastu, Namo Budaya, Salam Kebajikan. Selamat Sejahtera bagi kita semua."</p>
+       <p class="text-gray-700 leading-relaxed mb-4">Puji syukur kepada Tuhan Yang Maha Esa atas berkat dan rahmat-Nya, MKKS SMK Nabire terus berkomitmen untuk meningkatkan mutu pendidikan kejuruan di Kabupaten Nabire. Melalui forum ini, kami berharap dapat mewujudkan lulusan SMK yang kompeten, berkarakter, dan siap bersaing di dunia kerja maupun wirausaha.</p>
+       <p class="text-gray-700 font-semibold">— Ketua MKKS SMK Nabire</p>
+      </div>
+     </section><!-- Visi Misi -->
+     <section class="max-w-4xl mx-auto px-4 py-8">
+      <div class="grid md:grid-cols-2 gap-6">
+       <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <h3 class="text-xl font-bold text-primary mb-3">Visi</h3>
+        <p class="text-gray-600">Mewujudkan SMK di Kabupaten Nabire yang unggul, berkarakter, dan menghasilkan lulusan yang kompeten serta berdaya saing tinggi.</p>
+       </div>
+       <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <h3 class="text-xl font-bold text-primary mb-3">Misi</h3>
+        <ul class="text-gray-600 space-y-2 text-sm">
+         <li>• Meningkatkan kualitas pembelajaran di SMK</li>
+         <li>• Memperkuat kerjasama antar SMK di Nabire</li>
+         <li>• Mengembangkan kompetensi guru dan tenaga kependidikan</li>
+         <li>• Memfasilitasi link and match dengan dunia usaha/industri</li>
+        </ul>
+       </div>
+      </div>
+     </section><!-- Sejarah -->
+     <section class="max-w-4xl mx-auto px-4 py-8">
+      <h2 class="text-2xl font-bold text-accent mb-4 text-center">Sejarah Singkat</h2>
+      <p class="text-gray-600 text-center leading-relaxed">MKKS SMK Nabire didirikan sebagai wadah koordinasi dan musyawarah kerja para Kepala Sekolah SMK di Kabupaten Nabire, Papua Tengah. Forum ini bertujuan untuk meningkatkan mutu pendidikan kejuruan melalui kolaborasi, sharing best practices, dan perencanaan program bersama.</p>
+     </section><!-- Hubungi Kami -->
+     <section class="bg-accent text-white py-12 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+       <h2 class="text-2xl font-bold mb-6">Hubungi Kami</h2>
+       <div class="grid sm:grid-cols-3 gap-6">
+        <div>
+         <i data-lucide="phone" class="w-8 h-8 mx-auto mb-2"></i>
+         <p class="text-sm">+62 812-XXXX-XXXX</p>
+        </div>
+        <div>
+         <i data-lucide="mail" class="w-8 h-8 mx-auto mb-2"></i>
+         <p class="text-sm">mkkssmknabire@gmail.com</p>
+        </div>
+        <div>
+         <i data-lucide="map-pin" class="w-8 h-8 mx-auto mb-2"></i>
+         <p class="text-sm">Kab. Nabire, Papua Tengah</p>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- BERITA -->
+    <div id="page-berita" class="page fade-in hidden">
+     <section class="max-w-5xl mx-auto px-4 py-12">
+      <h2 class="text-2xl font-bold text-accent mb-8 text-center">Berita &amp; Kegiatan Terbaru</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+       <div class="card-hover bg-white border rounded-xl overflow-hidden shadow-sm">
+        <div class="h-40 bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center">
+         <i data-lucide="newspaper" class="w-12 h-12 text-white"></i>
+        </div>
+        <div class="p-5">
+         <p class="text-xs text-primary mb-2">Januari 2025</p>
+         <h3 class="font-bold mb-2">Rapat Koordinasi MKKS SMK Nabire</h3>
+         <p class="text-sm text-gray-600">Pelaksanaan rapat koordinasi membahas persiapan PPDB tahun ajaran 2026/2027.</p>
+        </div>
+       </div>
+       <div class="card-hover bg-white border rounded-xl overflow-hidden shadow-sm">
+        <div class="h-40 bg-gradient-to-br from-primary-dark to-accent flex items-center justify-center">
+         <i data-lucide="users" class="w-12 h-12 text-white"></i>
+        </div>
+        <div class="p-5">
+         <p class="text-xs text-primary mb-2">Desember 2024</p>
+         <h3 class="font-bold mb-2">Workshop Peningkatan Mutu Guru SMK</h3>
+         <p class="text-sm text-gray-600">Kegiatan workshop untuk meningkatkan kompetensi guru SMK se-Kabupaten Nabire.</p>
+        </div>
+       </div>
+       <div class="card-hover bg-white border rounded-xl overflow-hidden shadow-sm">
+        <div class="h-40 bg-gradient-to-br from-blue-400 to-primary flex items-center justify-center">
+         <i data-lucide="award" class="w-12 h-12 text-white"></i>
+        </div>
+        <div class="p-5">
+         <p class="text-xs text-primary mb-2">November 2024</p>
+         <h3 class="font-bold mb-2">Lomba Kompetensi Siswa SMK</h3>
+         <p class="text-sm text-gray-600">Siswa SMK Nabire berpartisipasi dalam LKS tingkat Provinsi Papua Tengah.</p>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- AKADEMIK -->
+    <div id="page-akademik" class="page fade-in hidden">
+     <section class="max-w-6xl mx-auto px-4 py-12">
+      <h2 class="text-2xl font-bold text-accent mb-8 text-center">Akademik - Pendaftaran SMK 2026/2027</h2>
+      <div id="akademik-container" class="space-y-8"></div>
+     </section>
+    </div><!-- PROFIL -->
+    <div id="page-profil" class="page fade-in hidden">
+     <section class="max-w-5xl mx-auto px-4 py-12">
+      <h2 class="text-2xl font-bold text-accent mb-8 text-center">Profil Pengurus MKKS SMK Nabire</h2><!-- Ketua & Sekretaris -->
+      <div class="grid md:grid-cols-2 gap-6 mb-10">
+       <div class="bg-white border rounded-xl p-6 text-center shadow-sm card-hover"><img src="https://iili.io/Bi3pgat.png" alt="Ketua MKKS" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-primary" loading="lazy" onerror="this.style.background='#e5e7eb';this.alt='Foto';">
+        <h3 class="font-bold text-lg">Ketua MKKS SMK Nabire</h3>
+        <p class="text-primary text-sm">Kepala Sekolah SMKN 1 Teluk Kimi</p>
+       </div>
+       <div class="bg-white border rounded-xl p-6 text-center shadow-sm card-hover"><img src="https://iili.io/BiF987t.jpg" alt="Sekretaris MKKS" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-primary" loading="lazy" onerror="this.style.background='#e5e7eb';this.alt='Foto';">
+        <h3 class="font-bold text-lg">Sekretaris MKKS SMK Nabire</h3>
+        <p class="text-primary text-sm">Kepala Sekolah SMKS Macida Kesehatan</p>
+       </div>
+      </div><!-- Anggota -->
+      <h3 class="text-xl font-bold text-accent mb-6 text-center">Anggota MKKS SMK Nabire</h3>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BiF2zCb.md.jpg" alt="SMKS Asy Syafi'iyah" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKS Asy Syafi'iyah</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BiF2oZu.md.jpg" alt="SMKS YPPK ST. Yoseph Calanz" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKS YPPK ST. Yoseph Calanz</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BiF2fvS.png" alt="SMKS Kristen Anak Panah" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKS Kristen Anak Panah</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BiF2qy7.md.jpg" alt="SMKS YPK DR.Nomensen" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKS YPK DR.Nomensen ST. Mambraku</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BiF2IGj.png" alt="SMKS Pongtiku" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKS Pongtiku</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BiF3dDF.md.png" alt="SMKS Petra" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKS Petra</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BiF2vMG.png" alt="SMKN 2 Nabire" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKN 2 Nabire</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BiF2Otn.md.jpg" alt="SMKN 1 Makimi" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKN 1 Makimi</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BiF2mcQ.png" alt="SMKS Yashaki" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKS Yashaki</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BiVnuUb.png" alt="SMKN 1 Nabire" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKN 1 Nabire</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/Bsc69Fs.jpg" alt="SMKN 1 Wanggar" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKN 1 Wanggar</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BiVnT0u.md.png" alt="SMKS Anigou Kesehatan" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKS Anigou Kesehatan</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BskoWVR.md.jpg" alt="SMKS Menara Ilmu" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKS Menara Ilmu</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BskoWVR.md.jpg" alt="SMKS Bakidi Yasebaper" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKS Bakidi Yasebaper</p>
+       </div>
+       <div class="bg-white border rounded-lg p-4 text-center card-hover">
+        <img src="https://iili.io/BskoWVR.md.jpg" alt="SMKS YPPGI" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border-2 border-primary-light" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <p class="font-semibold text-sm">SMKS YPPGI</p>
+       </div>
+      </div>
+     </section>
+    </div><!-- ALUR PENDAFTARAN -->
+    <div id="page-alur" class="page fade-in hidden">
+     <section class="max-w-4xl mx-auto px-4 py-12">
+      <h2 class="text-2xl font-bold text-accent mb-8 text-center">Alur Pendaftaran SMK Tahun Ajaran 2026/2027</h2>
+      <div class="space-y-4">
+       <div class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold shrink-0">
+         1
+        </div>
+        <div class="bg-primary-light rounded-lg p-4 flex-1">
+         <h4 class="font-bold">Isi Formulir Online</h4>
+         <p class="text-sm text-gray-600">Lengkapi formulir pendaftaran online di website ini.</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold shrink-0">
+         2
+        </div>
+        <div class="bg-primary-light rounded-lg p-4 flex-1">
+         <h4 class="font-bold">Siapkan Berkas</h4>
+         <p class="text-sm text-gray-600">Ijazah/SKL, Kartu Keluarga (KK), Akta Kelahiran, dan Pas Foto terbaru.</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold shrink-0">
+         3
+        </div>
+        <div class="bg-primary-light rounded-lg p-4 flex-1">
+         <h4 class="font-bold">Verifikasi Berkas</h4>
+         <p class="text-sm text-gray-600">Bawa berkas asli ke sekolah pilihan untuk diverifikasi oleh admin.</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold shrink-0">
+         4
+        </div>
+        <div class="bg-primary-light rounded-lg p-4 flex-1">
+         <h4 class="font-bold">Pengumuman</h4>
+         <p class="text-sm text-gray-600">Cek status pendaftaran (Lolos/Tidak Lolos) melalui website.</p>
+        </div>
+       </div>
+       <div class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center font-bold shrink-0">
+         5
+        </div>
+        <div class="bg-green-50 rounded-lg p-4 flex-1">
+         <h4 class="font-bold text-green-700">Daftar Ulang</h4>
+         <p class="text-sm text-gray-600">Lakukan daftar ulang di sekolah yang dipilih sesuai jadwal.</p>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- STATISTIK -->
+    <div id="page-statistik" class="page fade-in hidden">
+     <section class="max-w-5xl mx-auto px-4 py-12">
+      <h2 class="text-2xl font-bold text-accent mb-8 text-center">Statistik Pendaftaran PPDB 2026/2027</h2>
+      <div class="grid sm:grid-cols-3 gap-6 mb-8">
+       <div class="bg-primary-light rounded-xl p-6 text-center">
+        <p class="text-3xl font-bold text-primary" id="stat-total">0</p>
+        <p class="text-sm text-gray-600">Total Pendaftar</p>
+       </div>
+       <div class="bg-green-50 rounded-xl p-6 text-center">
+        <p class="text-3xl font-bold text-green-600" id="stat-lolos">0</p>
+        <p class="text-sm text-gray-600">Lolos Verifikasi</p>
+       </div>
+       <div class="bg-red-50 rounded-xl p-6 text-center">
+        <p class="text-3xl font-bold text-red-500" id="stat-tidak">0</p>
+        <p class="text-sm text-gray-600">Tidak Lolos</p>
+       </div>
+      </div>
+      <div id="stat-per-smk" class="bg-white border rounded-xl p-6"></div>
+     </section>
+    </div><!-- PENDAFTARAN -->
+    <div id="page-pendaftaran" class="page fade-in hidden">
+     <section class="max-w-3xl mx-auto px-4 py-12">
+      <h2 class="text-2xl font-bold text-accent mb-2 text-center">Formulir Pendaftaran PPDB 2026/2027</h2>
+      <p class="text-center text-sm text-gray-500 mb-8">Isi data dengan benar dan lengkap</p>
+      <form id="form-daftar" class="space-y-4 bg-white border rounded-xl p-6 shadow-sm">
+       <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+         <label for="f-nisn" class="block text-sm font-medium mb-1">NISN</label><input id="f-nisn" type="text" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="10 digit NISN">
+        </div>
+        <div>
+         <label for="f-nik" class="block text-sm font-medium mb-1">NIK</label><input id="f-nik" type="text" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="16 digit NIK">
+        </div>
+       </div>
+       <div>
+        <label for="f-nama" class="block text-sm font-medium mb-1">Nama Lengkap</label><input id="f-nama" type="text" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none">
+       </div>
+       <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+         <label for="f-tempat" class="block text-sm font-medium mb-1">Tempat Lahir</label><input id="f-tempat" type="text" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none">
+        </div>
+        <div>
+         <label for="f-tgl" class="block text-sm font-medium mb-1">Tanggal Lahir</label><input id="f-tgl" type="date" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none">
+        </div>
+       </div>
+       <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+         <label for="f-jk" class="block text-sm font-medium mb-1">Jenis Kelamin</label><select id="f-jk" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none"><option value="">Pilih</option><option>Laki-laki</option><option>Perempuan</option></select>
+        </div>
+        <div>
+         <label for="f-agama" class="block text-sm font-medium mb-1">Agama</label><select id="f-agama" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none"><option value="">Pilih</option><option>Islam</option><option>Kristen</option><option>Katolik</option><option>Hindu</option><option>Buddha</option><option>Konghucu</option></select>
+        </div>
+       </div>
+       <div>
+        <label for="f-alamat" class="block text-sm font-medium mb-1">Alamat</label><textarea id="f-alamat" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none" rows="2"></textarea>
+       </div>
+       <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+         <label for="f-asal" class="block text-sm font-medium mb-1">Asal Sekolah</label><input id="f-asal" type="text" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none">
+        </div>
+        <div>
+         <label for="f-telp" class="block text-sm font-medium mb-1">Nomor Telepon</label><input id="f-telp" type="tel" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none">
+        </div>
+       </div>
+       <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+         <label for="f-smk" class="block text-sm font-medium mb-1">Pilihan SMK</label><select id="f-smk" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none" onchange="updateJurusan()"><option value="">Pilih SMK</option></select>
+        </div>
+        <div>
+         <label for="f-jurusan" class="block text-sm font-medium mb-1">Pilihan Jurusan</label><select id="f-jurusan" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none"><option value="">Pilih Jurusan</option></select>
+        </div>
+       </div>
+       <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+        <p class="text-sm font-semibold text-yellow-800 mb-2"><i data-lucide="alert-circle" class="w-4 h-4 inline mr-1"></i>Syarat Verifikasi Berkas:</p>
+        <ul class="text-xs text-yellow-700 space-y-1">
+         <li>• Ijazah / Surat Keterangan Lulus (SKL)</li>
+         <li>• Kartu Keluarga (KK)</li>
+         <li>• Akta Kelahiran</li>
+         <li>• Pas Foto 3x4 (latar merah)</li>
+        </ul>
+       </div>
+       <div>
+        <label for="f-catatan" class="block text-sm font-medium mb-1">Catatan Berkas</label><textarea id="f-catatan" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none" rows="2" placeholder="Contoh: Ijazah menyusul, menggunakan SKL"></textarea>
+       </div>
+       <div id="form-msg" class="hidden rounded-lg p-3 text-sm"></div><button type="submit" id="btn-daftar" class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition">Daftar Sekarang</button>
+      </form>
+     </section>
+    </div><!-- LOGIN -->
+    <div id="page-login" class="page fade-in hidden">
+     <section class="max-w-md mx-auto px-4 py-12">
+      <h2 class="text-2xl font-bold text-accent mb-8 text-center">Login Admin</h2>
+      <form id="form-login" class="bg-white border rounded-xl p-6 shadow-sm space-y-4">
+       <div>
+        <label for="login-user" class="block text-sm font-medium mb-1">Username</label><input id="login-user" type="text" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Username">
+       </div>
+       <div>
+        <label for="login-pass" class="block text-sm font-medium mb-1">Password</label><input id="login-pass" type="password" required class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Password">
+       </div>
+       <div id="login-msg" class="hidden rounded-lg p-3 text-sm"></div><button type="submit" class="w-full bg-accent hover:bg-blue-900 text-white font-semibold py-3 rounded-lg transition">Login</button>
+      </form>
+     </section>
+    </div><!-- ADMIN PANEL -->
+    <div id="page-admin" class="page fade-in hidden">
+     <section class="max-w-6xl mx-auto px-4 py-8">
+      <div class="flex items-center justify-between mb-6">
+       <h2 class="text-xl font-bold text-accent" id="admin-title">Panel Admin</h2><button onclick="logout()" class="text-sm bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">Logout</button>
+      </div><!-- Master stats -->
+      <div id="master-stats" class="hidden grid sm:grid-cols-3 gap-4 mb-6">
+       <div class="bg-primary-light rounded-lg p-4 text-center">
+        <p class="text-2xl font-bold text-primary" id="m-total">0</p>
+        <p class="text-xs text-gray-600">Total Pendaftar Semua SMK</p>
+       </div>
+       <div class="bg-green-50 rounded-lg p-4 text-center">
+        <p class="text-2xl font-bold text-green-600" id="m-lolos">0</p>
+        <p class="text-xs text-gray-600">Total Lolos</p>
+       </div>
+       <div class="bg-red-50 rounded-lg p-4 text-center">
+        <p class="text-2xl font-bold text-red-500" id="m-tidak">0</p>
+        <p class="text-xs text-gray-600">Total Tidak Lolos</p>
+       </div>
+      </div>
+      <div id="admin-table-wrap" class="bg-white border rounded-xl overflow-x-auto">
+       <table class="w-full text-xs">
+        <thead class="bg-gray-50">
+         <tr>
+          <th class="px-3 py-3 text-left">No</th>
+          <th class="px-3 py-3 text-left">NISN</th>
+          <th class="px-3 py-3 text-left">NIK</th>
+          <th class="px-3 py-3 text-left">Nama</th>
+          <th class="px-3 py-3 text-left">Telepon</th>
+          <th class="px-3 py-3 text-left">SMK</th>
+          <th class="px-3 py-3 text-left">Jurusan</th>
+          <th class="px-3 py-3 text-left">Status</th>
+          <th class="px-3 py-3 text-left">Aksi</th>
+         </tr>
+        </thead>
+        <tbody id="admin-tbody"></tbody>
+       </table>
+      </div>
+      <p id="admin-empty" class="text-center text-gray-500 py-8 hidden">Belum ada data pendaftar.</p>
+     </section>
+    </div>
+   </div><!-- end pages --> <!-- Footer -->
+   <footer class="bg-gray-100 text-center py-6 px-4 text-sm text-gray-500">
+    <p>© 2025 MKKS SMK Nabire - Forum Musyawarah Kerja Kepala Sekolah SMK Kabupaten Nabire</p>
+   </footer>
+  </div><!-- end app -->
+  <script>
+// SMK & Jurusan Data
+const smkData = {
+    'SMKN 1 Nabire': ['Teknik Kendaraan Ringan Otomotif (TKRO)', 'Sistem Informatika', 'Jaringan & Aplikasi', 'Teknik Komputer & Jaringan (TKJ)', 'Multimedia', 'Agribisnis Tanaman Pangan & Hortikultura (ATPH)', 'Agribisnis Tanaman Perkebunan (ATP)', 'Agribisnis Ternak Unggas (ATU)', 'Keperawatan Hewan', 'Agribisnis Pengolahan Hasil Pertanian (APHP)', 'Agribisnis Perikanan Air Tawar (APAT)'],
+    'SMKN 1 Makimi': ['Teknik & Bisnis Sepeda Motor (TBSM)', 'Teknik Komputer & Jaringan (TKJ)', 'Agribisnis Ternak Unggas (ATU)'],
+    'SMKN 1 Teluk Kimi': ['Teknik Komputer & Jaringan (TKJ)'],
+    'SMKN 1 Wanggar': ['Perhotelan (PHT)', 'Teknik Komputer & Jaringan (TKJ)'],
+    'SMKN 2 Nabire': ['Teknik Konstruksi Perumahan (TKP)', 'Teknik Instalasi Tenaga Kelistrikan (TITL)', 'Teknik Audio Video (TAV)', 'Teknik Bisnis Sepeda Motor (TBSM)', 'Teknik Kendaraan Ringan (TKR)', 'Teknik Komputer & Jaringan (TKJ)'],
+    'SMKS Petra': ['Teknik Komputer & Jaringan (TKJ)', 'Akuntansi & Keuangan Lembaga (AKL)', 'Otomatisasi & Tata Kelola Perkantoran (OTKP)'],
+    'SMKS Yashaki': ['Otomatisasi & Tata Kelola Perkantoran (OTKP)', 'Teknik Komputer & Jaringan (TKJ)'],
+    'SMKS Pongtiku': ['Teknik Jaringan Komputer & Telekomunikasi (TJKT)', 'Teknik Pengelasan & Fabrikasi Logam (TPFL)', 'Layanan Kesehatan (LK)'],
+    'SMKS Kristen Anak Panah': ['Rekayasa Perangkat Lunak (RPL)', 'Desain Komunikasi Visual (DKV)', 'Perhotelan (Hospitality)'],
+    'SMKS Anigou Kesehatan': ['Keperawatan Medis', 'Keperawatan Sosial', 'Farmasi Klinis', 'Kebidanan'],
+    'SMKS YPK DR.Nomensen ST. Mambraku': ['Teknik Geologi Pertambangan (GP)', 'Teknik Komputer & Jaringan (TKJ)', 'Teknik Energi Terbarukan'],
+    'SMKS Asy Syafi\'iyah': ['Desain Pemodelan & Informasi Bangunan (DPIB)', 'Teknik Kendaraan Ringan Otomotif (TKR)'],
+    'SMKS AL - Madinah': ['Teknik Komputer & Jaringan (TKJ)'],
+    'SMKS Macida Kesehatan': ['Farmasi Klinik & Komunikasi (FKK)', 'Farmasi Industri (FI)', 'Asisten Perawat (AP)', 'Asisten Teknik Laboratorium Medik (ATLM)', 'Analis Pengujian Laboratorium (APL)'],
+    'SMKS Menara Ilmu': ['Desain Pemodelan & Informasi Bangunan'],
+    'SMKS Bakidi Yasebaper': ['Agribisnis Tanaman Perkebunan'],
+    'SMKS YPPK ST. Yoseph Calanz': ['Pertanian', 'Peternakan'],
+    'SMKS YPPGI': ['Kriya Kreatif Logam & Perhiasan']
+};
+
+const smkDetails = {
+    'SMKN 1 Nabire': { alamat: 'Jl. Ampera, Kaliharapan' },
+    'SMKN 1 Makimi': { alamat: 'Jl. Marilephy, Legari' },
+    'SMKN 1 Teluk Kimi': { alamat: 'Jl. Kimibay-Legare, Samabusa' },
+    'SMKN 1 Wanggar': { alamat: 'Jl. Poros Jalur 1 Wanggar' },
+    'SMKN 2 Nabire': { alamat: 'Jl. Poros Wadio, Wonorejo' },
+    'SMKS Petra': { alamat: 'Jl. DS Yan Mamoribo, Siriwini' },
+    'SMKS Yashaki': { alamat: 'Jl. Mandala, Kalibobo' },
+    'SMKS Pongtiku': { alamat: 'Jl. Gagak, Siriwini' },
+    'SMKS Kristen Anak Panah': { alamat: 'Jl. Christina Marta Tiahahu, Kalibobo' },
+    'SMKS Anigou Kesehatan': { alamat: 'Jl. Mandala, Kalibobo' },
+    'SMKS YPK DR.Nomensen ST. Mambraku': { alamat: 'Jl. Wambarek Putaran II, Kalibobo' },
+    'SMKS Asy Syafi\'iyah': { alamat: 'Jl. Kakak Tua, Sp3 Wadio' },
+    'SMKS AL - Madinah': { alamat: 'Jl. Ksatrian, Girimulyo' },
+    'SMKS Macida Kesehatan': { alamat: 'Jl. Martha Ch. Tiahahu, Kalibobo' },
+    'SMKS Menara Ilmu': { alamat: 'Kamp. Kali Semen, Wanggar' },
+    'SMKS Bakidi Yasebaper': { alamat: 'Kimi' },
+    'SMKS YPPK ST. Yoseph Calanz': { alamat: 'Karadiri' },
+    'SMKS YPPGI': { alamat: 'Jl. Surodjo, Karang Mulia' }
+};
+
+// Admin credentials
+const adminAccounts = {};
+Object.keys(smkData).forEach(smk => {
+    const key = smk.toLowerCase().replace(/[^a-z0-9]/g,'').replace(/smk[sn]?/,'');
+    adminAccounts[smk.toLowerCase().replace(/\s+/g,'')] = { password: 'Admin12345', smk: smk };
+});
+// Simplified: use smk name without spaces lowercase as username
+const smkLogins = {};
+Object.keys(smkData).forEach(smk => {
+    const user = smk.toLowerCase().replace(/[^a-z0-9]/g,'');
+    smkLogins[user] = { password: 'Admin12345', smk: smk };
+});
+const masterLogin = { user: 'mkkssmknabire', password: 'Master12345' };
+
+let allData = [];
+let currentAdmin = null; // { smk: 'xxx', isMaster: false }
+
+// TAMBAHKAN BARIS INI (Ganti dengan URL Web App Google Apps Script Anda)
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbydbgBjqZdX27P0-OVRZkID-FGZR5h33iGC3TnL8IeqKwtY42vAc77qvy4zulrsCwOW/exec';
+
+// Populate SMK select
+function populateSmkSelect() {
+    const sel = document.getElementById('f-smk');
+    Object.keys(smkData).forEach(smk => {
+        const opt = document.createElement('option');
+        opt.value = smk; opt.textContent = smk;
+        sel.appendChild(opt);
+    });
+}
+
+function updateJurusan() {
+    const smk = document.getElementById('f-smk').value;
+    const sel = document.getElementById('f-jurusan');
+    sel.innerHTML = '<option value="">Pilih Jurusan</option>';
+    if (smk && smkData[smk]) {
+        smkData[smk].forEach(j => {
+            const opt = document.createElement('option');
+            opt.value = j; opt.textContent = j;
+            sel.appendChild(opt);
+        });
+    }
+}
+
+// Navigation
+function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+    document.getElementById('page-' + page).classList.remove('hidden');
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('nav-active'));
+    const btn = document.querySelector(`.nav-btn[data-page="${page}"]`);
+    if (btn) btn.classList.add('nav-active');
+    if (page === 'statistik') updateStats();
+    if (page === 'akademik') renderAkademik();
+}
+
+function toggleMobile() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+}
+
+// Akademik Page Render
+function renderAkademik() {
+    const container = document.getElementById('akademik-container');
+    container.innerHTML = '';
+    Object.keys(smkData).forEach((smk, idx) => {
+        const detail = smkDetails[smk] || { alamat: '-' };
+        const jurusan = smkData[smk];
+        const html = `
+            <div class="bg-white border rounded-xl p-6 shadow-sm card-hover">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold text-accent">${smk}</h3>
+                        <p class="text-sm text-gray-600 flex items-center gap-1 mt-1">
+                            <i data-lucide="map-pin" style="width:14px; height:14px;"></i> ${detail.alamat}
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-sm text-primary mb-3">Jurusan:</h4>
+                    <div class="grid sm:grid-cols-2 gap-2">
+                        ${jurusan.map(j => `<div class="text-xs bg-primary-light text-primary px-3 py-2 rounded-lg">• ${j}</div>`).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+        container.innerHTML += html;
+    });
+    lucide.createIcons();
+}
+
+// Show message helper
+function showMsg(elId, msg, isError) {
+    const el = document.getElementById(elId);
+    el.className = `rounded-lg p-3 text-sm ${isError ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`;
+    el.textContent = msg;
+    el.classList.remove('hidden');
+    setTimeout(() => el.classList.add('hidden'), 4000);
+}
+
+// Data SDK
+const dataHandler = {
+    onDataChanged(data) {
+        allData = data;
+        updateStats();
+        if (currentAdmin) renderAdminTable();
+    }
+};
+
+// Stats
+function updateStats() {
+    const total = allData.length;
+    const lolos = allData.filter(d => d.status_verifikasi === 'Lolos').length;
+    const tidak = allData.filter(d => d.status_verifikasi === 'Tidak Lolos').length;
+    document.getElementById('stat-total').textContent = total;
+    document.getElementById('stat-lolos').textContent = lolos;
+    document.getElementById('stat-tidak').textContent = tidak;
+    // Per SMK
+    const perSmk = {};
+    Object.keys(smkData).forEach(s => perSmk[s] = 0);
+    allData.forEach(d => { if (perSmk[d.pilihan_smk] !== undefined) perSmk[d.pilihan_smk]++; });
+    const wrap = document.getElementById('stat-per-smk');
+    wrap.innerHTML = '<h4 class="font-bold mb-4">Pendaftar Per SMK</h4><div class="space-y-2">' +
+        Object.entries(perSmk).map(([smk, count]) => {
+            const pct = total > 0 ? (count / total * 100) : 0;
+            return `<div><div class="flex justify-between text-xs mb-1"><span>${smk}</span><span>${count}</span></div><div class="h-3 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width:${pct}%"></div></div></div>`;
+        }).join('') + '</div>';
+}
+
+// Registration
+// Registration
+document.getElementById('form-daftar').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const nisn = document.getElementById('f-nisn').value.trim();
+    const nik = document.getElementById('f-nik').value.trim();
+    const nama = document.getElementById('f-nama').value.trim();
+    const telp = document.getElementById('f-telp').value.trim();
+
+    // Anti duplikat
+    const dup = allData.find(d => d.nisn === nisn || d.nik === nik);
+    if (dup) { showMsg('form-msg', 'NISN atau NIK sudah terdaftar! Data duplikat tidak diizinkan.', true); return; }
+
+    if (allData.length >= 999) { showMsg('form-msg', 'Kuota pendaftaran telah penuh (maks 999).', true); return; }
+
+    const btn = document.getElementById('btn-daftar');
+    btn.disabled = true; btn.textContent = 'Mendaftar...';
+
+    const record = {
+        action: 'register', // Tambahkan action agar backend tahu ini pendaftaran baru
+        nisn, nik, nama_lengkap: nama,
+        tempat_lahir: document.getElementById('f-tempat').value.trim(),
+        tanggal_lahir: document.getElementById('f-tgl').value,
+        jenis_kelamin: document.getElementById('f-jk').value,
+        alamat: document.getElementById('f-alamat').value.trim(),
+        agama: document.getElementById('f-agama').value,
+        asal_sekolah: document.getElementById('f-asal').value.trim(),
+        nomor_telepon: telp,
+        pilihan_smk: document.getElementById('f-smk').value,
+        pilihan_jurusan: document.getElementById('f-jurusan').value,
+        catatan_berkas: document.getElementById('f-catatan').value.trim(),
+        status_verifikasi: 'Belum Diverifikasi',
+        tanggal_daftar: new Date().toISOString()
+    };
+    
+    let result = { isOk: false };
+
+    try {
+        // Menggunakan konstanta SCRIPT_URL yang konsisten
+        const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify(record)
+        });
+        
+        result = await response.json();
+    } catch (error) {
+        console.error('Error!', error.message);
+    }
+
+    btn.disabled = false; btn.textContent = 'Daftar Sekarang';
+
+    if (result.isOk) {
+        record.__backendId = result.id || Date.now().toString(); // Ambil ID asli dari backend jika ada
+        allData.push(record);
+        
+        updateStats();
+        if(currentAdmin) renderAdminTable();
+
+        showMsg('form-msg', 'Pendaftaran berhasil! Silakan siapkan berkas untuk verifikasi.', false);
+        e.target.reset();
+    } else {
+        showMsg('form-msg', 'Gagal mendaftar. Silakan coba lagi.', true);
+    }
+});
+
+// Login
+document.getElementById('form-login').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const user = document.getElementById('login-user').value.trim().toLowerCase();
+    const pass = document.getElementById('login-pass').value;
+
+    if (user === masterLogin.user && pass === masterLogin.password) {
+        currentAdmin = { smk: null, isMaster: true };
+        document.getElementById('admin-title').textContent = 'Panel Master - Semua SMK';
+        
+        // Tampilkan statistik untuk Master
+        document.getElementById('master-stats').classList.remove('hidden');
+        
+        showPage('admin'); renderAdminTable();
+        e.target.reset(); return;
+    }
+
+    const found = smkLogins[user];
+    if (found && pass === found.password) {
+        currentAdmin = { smk: found.smk, isMaster: false };
+        document.getElementById('admin-title').textContent = 'Panel Admin - ' + found.smk;
+        
+        // Tampilkan statistik untuk Admin Sekolah juga
+        document.getElementById('master-stats').classList.remove('hidden');
+        
+        showPage('admin'); renderAdminTable();
+        e.target.reset(); return;
+    }
+
+    showMsg('login-msg', 'Username atau password salah!', true);
+});
+
+function logout() {
+    currentAdmin = null;
+    showPage('login');
+}
+
+// Admin Table
+function renderAdminTable() {
+    let data = allData;
+    
+    // Filter data jika bukan master
+    if (!currentAdmin.isMaster) {
+        data = allData.filter(d => d.pilihan_smk === currentAdmin.smk);
+    }
+
+    // Update Statistik Dinamis di Panel Admin
+    document.getElementById('m-total').textContent = data.length;
+    document.getElementById('m-lolos').textContent = data.filter(d => d.status_verifikasi === 'Lolos').length;
+    document.getElementById('m-tidak').textContent = data.filter(d => d.status_verifikasi === 'Tidak Lolos').length;
+
+    const tbody = document.getElementById('admin-tbody');
+    const empty = document.getElementById('admin-empty');
+
+    if (data.length === 0) {
+        tbody.innerHTML = ''; 
+        empty.classList.remove('hidden'); 
+        return;
+    }
+    empty.classList.add('hidden');
+
+    tbody.innerHTML = data.map((d, i) => {
+        const statusClass = d.status_verifikasi === 'Lolos' ? 'bg-green-100 text-green-700' :
+            d.status_verifikasi === 'Tidak Lolos' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700';
+        
+        // --- LOGIKA PERBAIKAN MASTER ---
+        // Jika login sebagai Master, kolom aksi hanya menampilkan teks status.
+        // Jika login sebagai Admin Sekolah, tampilkan tombol kontrol (Lolos, Tolak, Edit, Hapus).
+        let kolomAksi = '';
+        if (currentAdmin.isMaster) {
+            kolomAksi = `<span class="text-gray-400 italic font-medium">Hanya Baca</span>`;
+        } else {
+            kolomAksi = `
+                <div class="flex gap-1 flex-wrap">
+                    <button onclick="verifikasi('${d.__backendId}','Lolos')" class="px-2 py-1 bg-green-500 text-white rounded text-xs hover:bg-green-600">Lolos</button>
+                    <button onclick="verifikasi('${d.__backendId}','Tidak Lolos')" class="px-2 py-1 bg-red-500 text-white rounded text-xs hover:bg-red-600">Tolak</button>
+                    <button onclick="editRecord('${d.__backendId}')" class="px-2 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600">Edit</button>
+                    <button onclick="confirmDelete('${d.__backendId}')" class="px-2 py-1 bg-gray-500 text-white rounded text-xs hover:bg-gray-600">Hapus</button>
+                </div>`;
+        }
+
+        return `<tr class="border-t hover:bg-gray-50">
+            <td class="px-3 py-2">${i+1}</td>
+            <td class="px-3 py-2">${d.nisn}</td>
+            <td class="px-3 py-2">${d.nik}</td>
+            <td class="px-3 py-2 font-medium">${d.nama_lengkap}</td>
+            <td class="px-3 py-2">${d.nomor_telepon}</td>
+            <td class="px-3 py-2">${d.pilihan_smk}</td>
+            <td class="px-3 py-2">${d.pilihan_jurusan}</td>
+            <td class="px-3 py-2"><span class="px-2 py-1 rounded text-xs font-medium ${statusClass}">${d.status_verifikasi}</span></td>
+            <td class="px-3 py-2">
+                ${kolomAksi}
+                <div id="confirm-${d.__backendId}" class="hidden"></div>
+                <div id="edit-${d.__backendId}" class="hidden"></div>
+            </td>
+        </tr>`;
+    }).join('');
+}
+async function verifikasi(id, status) {
+    const record = allData.find(d => d.__backendId === id);
+    if (!record) return;
+    
+    // Sinkronisasi lokal (Real-time UI)
+    record.status_verifikasi = status;
+    updateStats();       
+    renderAdminTable();  
+
+    try {
+        await fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+                action: 'update_status', // Menyesuaikan dengan backend
+                __backendId: id,
+                pilihan_smk: record.pilihan_smk, // Mengirimkan sheet target
+                status_verifikasi: status
+            })
+        });
+        console.log("Status berhasil disinkronkan ke server");
+    } catch (e) {
+        console.error("Gagal verifikasi ke server", e);
+    }
+}
+
+function confirmDelete(id) {
+    const el = document.getElementById('confirm-' + id);
+    el.classList.remove('hidden');
+    el.innerHTML = `
+        <div class="mt-1 p-2 bg-red-50 rounded text-xs">
+            Yakin hapus? 
+            <button onclick="doDelete('${id}')" class="text-red-600 font-bold underline">Ya</button> 
+            <button onclick="document.getElementById('confirm-${id}').classList.add('hidden')" class="ml-2">Batal</button>
+        </div>`;
+}
+
+async function doDelete(id) {
+    const idx = allData.findIndex(d => d.__backendId === id);
+    if (idx === -1) return;
+    
+    // Hapus dari memori lokal agar tampilan langsung update
+    allData.splice(idx, 1);
+    updateStats();       
+    renderAdminTable();  
+    
+    try {
+        await fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify({ 
+                action: 'delete', 
+                __backendId: id 
+            })
+        });
+    } catch (e) {
+        console.error("Gagal menghapus data", e);
+    }
+}
+function editRecord(id) {
+    const record = allData.find(d => d.__backendId === id);
+    if (!record) return;
+    const el = document.getElementById('edit-' + id);
+    el.classList.remove('hidden');
+    el.innerHTML = `<div class="mt-1 p-2 bg-blue-50 rounded space-y-1 text-xs">
+        <input id="ed-nik-${id}" value="${record.nik}" class="w-full border rounded px-2 py-1" placeholder="NIK">
+        <input id="ed-nisn-${id}" value="${record.nisn}" class="w-full border rounded px-2 py-1" placeholder="NISN">
+        <input id="ed-nama-${id}" value="${record.nama_lengkap}" class="w-full border rounded px-2 py-1" placeholder="Nama">
+        <input id="ed-telp-${id}" value="${record.nomor_telepon}" class="w-full border rounded px-2 py-1" placeholder="Telepon">
+        <div class="flex gap-1"><button onclick="saveEdit('${id}')" class="px-2 py-1 bg-blue-500 text-white rounded">Simpan</button><button onclick="document.getElementById('edit-${id}').classList.add('hidden')" class="px-2 py-1 bg-gray-300 rounded">Batal</button></div>
+    </div>`;
+}
+
+async function saveEdit(id) {
+    const record = allData.find(d => d.__backendId === id);
+    if (!record) return;
+
+    const newNama = document.getElementById('ed-nama-' + id).value.trim();
+    const newTelp = document.getElementById('ed-telp-' + id).value.trim();
+
+    // Update lokal
+    record.nama_lengkap = newNama;
+    record.nomor_telepon = newTelp;
+    
+    document.getElementById('edit-' + id).classList.add('hidden');
+    renderAdminTable();
+
+    try {
+        await fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify({
+                action: 'update_data', // Pastikan Apps Script Anda memiliki handler ini
+                __backendId: id,
+                nama_lengkap: newNama,
+                nomor_telepon: newTelp
+            })
+        });
+    } catch (e) {
+        console.error("Gagal mengedit data", e);
+    }
+}
+
+async function fetchData() {
+    try {
+        const response = await fetch(SCRIPT_URL);
+        const result = await response.json();
+        if (result.isOk) {
+            allData = result.data; // Simpan data dari sheet ke memori browser
+            updateStats();
+            if (currentAdmin) renderAdminTable();
+        }
+    } catch (e) {
+        console.error("Gagal menarik data dari Google Sheets", e);
+    }
+}
+
+// ==========================================
+// KODE PERBAIKAN MULAI DARI SINI
+// ==========================================
+
+// 1. Fungsi Init yang sudah diperbaiki
+async function init() {
+    populateSmkSelect(); // Mengisi pilihan SMK
+    showPage('beranda');
+
+    // Pengecekan agar tidak error jika dataSdk gagal dimuat
+    if (typeof window.dataSdk !== 'undefined' && window.dataSdk.init) {
+        const initResult = await window.dataSdk.init(dataHandler);
+        if (!initResult.isOk) console.error('Data SDK init failed');
+    }
+
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}
+
+// 2. Element SDK (Konfigurasi Bawaan)
+const defaultConfig = {
+    site_title: 'MKKS SMK Nabire',
+    slogan: 'SMK Bisa, Siap Kerja, Siap Wirausaha',
+    background_color: '#FFFFFF',
+    primary_color: '#0EA5E9',
+    text_color: '#1E3A5F',
+    surface_color: '#E0F2FE',
+    accent_color: '#0284C7',
+    font_family: 'Poppins',
+    font_size: 16
+};
+
+// 3. Pengecekan agar script tidak mati jika elementSdk gagal dimuat
+if (typeof window.elementSdk !== 'undefined') {
+    window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+            const title = config.site_title || defaultConfig.site_title;
+            const slogan = config.slogan || defaultConfig.slogan;
+            document.getElementById('nav-title').textContent = title;
+            document.getElementById('hero-title').textContent = title;
+            document.getElementById('hero-slogan').textContent = slogan;
+        },
+        mapToCapabilities: (config) => ({
+            recolorables: [
+                { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+                { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+                { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+                { get: () => config.primary_color || defaultConfig.primary_color, set: (v) => { config.primary_color = v; window.elementSdk.setConfig({ primary_color: v }); } },
+                { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } }
+            ],
+            borderables: [],
+            fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+            fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+            ['site_title', config.site_title || defaultConfig.site_title],
+            ['slogan', config.slogan || defaultConfig.slogan]
+        ])
+    });
+}
+
+// 4. Pemanggilan fungsi init() yang paling aman setelah HTML selesai dirender
+window.addEventListener('DOMContentLoaded', init);
+
+// ==========================================
+// BATAS KODE PERBAIKAN
+// ==========================================
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f49af2d91ac8740',t:'MTc3NzU4NTAxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+
+
